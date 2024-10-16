@@ -85,12 +85,12 @@
             min-height: 50px;
             max-height: 150px; /* 최대 높이를 설정 (예: 3줄) */
             font-size: 20px;
-            color: #7A5A4A;
+            color: #000; /* 사용자 메시지 글자 색상 */
             outline: none;
             margin-right: 60px; /* 버튼을 위한 여백 추가 */
             line-height: 1.5; /* 줄 간격 설정 */
             text-align: left;
-            background-color: white;
+            background-color: #fff; /* 입력창 배경 색상 */
             transition: background-color 0.3s, color 0.3s, border-color 0.3s;
         }
 
@@ -108,7 +108,7 @@
         button {
             padding: 0;
             border: none;
-            background-color: #1D4FA7;
+            background-color: #007AFF; /* 전송 버튼 색상 - 파란색 */
             color: white;
             border-radius: 50%;
             cursor: pointer;
@@ -125,7 +125,7 @@
         }
 
         button:hover {
-            background-color: #155a88;
+            background-color: #0051A2; /* hover 시 색상 변경 */
         }
 
         .message {
@@ -140,7 +140,7 @@
         }
 
         .user-message {
-            background-color: #4386E8;
+            background-color: #007AFF; /* 사용자 메시지 색상 - 파란색 */
             color: white;
             float: right;
             text-align: left;
@@ -148,22 +148,22 @@
         }
 
         .system-message {
-            background-color: #D4A848;
-            color: white;
+            background-color: #E5E5EA; /* 시스템 메시지 색상 - 회색 */
+            color: black;
             float: left;
             text-align: left;
             margin-left: 10px;
         }
 
         .message:hover {
-            background-color: rgba(67, 134, 232, 0.7); /* 사용자 메시지 hover 배경색 */
+            background-color: rgba(0, 122, 255, 0.7); /* 사용자 메시지 hover 배경색 */
             color: white; /* hover 시 글자색 */
             transform: scale(1.02); /* 약간 커지도록 효과 추가 */
         }
 
         .system-message:hover {
-            background-color: rgba(212, 168, 72, 0.7); /* 시스템 메시지 hover 배경색 */
-            color: white; /* hover 시 글자색 */
+            background-color: rgba(229, 229, 229, 0.7); /* 시스템 메시지 hover 배경색 */
+            color: black; /* hover 시 글자색 */
             transform: scale(1.02); /* 약간 커지도록 효과 추가 */
         }
 
@@ -186,7 +186,7 @@
         }
 
         #theme-toggle:hover {
-            background-color: #155a88;
+            background-color: #0051A2; /* hover 시 색상 변경 */
         }
 
         /* 모바일 및 태블릿 기기에서 모드 변경 버튼 숨기기 */
@@ -276,6 +276,14 @@
                 inputElement.style.height = '50px'; // 기본 크기로 되돌리기
             }
         }
+
+        // Enter와 Shift + Enter 이벤트 처리
+        document.getElementById('user-input').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                sendMessage();
+            }
+        });
 
         // 페이지 로드 시 다크 모드 확인
         window.onload = checkDarkMode;
